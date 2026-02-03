@@ -52,6 +52,9 @@ export const POST: APIRoute = async ({ request }) => {
         user: import.meta.env.SMTP_USER,
         pass: import.meta.env.SMTP_PASS,
       },
+      tls: {
+        rejectUnauthorized: false // Needed for shared hosting with mismatched certificates
+      }
     });
 
     // Service labels
