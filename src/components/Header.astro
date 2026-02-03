@@ -1,0 +1,157 @@
+---
+const navLinks = [
+  { href: "#uslugi", label: "Usługi" },
+  { href: "#realizacje", label: "Realizacje" },
+  { href: "#o-nas", label: "O nas" },
+  { href: "#kontakt", label: "Kontakt" },
+];
+---
+
+<header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+  <div class="absolute inset-0 bg-white/80 backdrop-blur-xl border-b border-transparent transition-all duration-300" id="header-bg"></div>
+  
+  <nav class="container relative z-10">
+    <div class="flex items-center justify-between h-[72px]">
+      <!-- Logo -->
+      <a href="/" class="flex items-center transition-opacity hover:opacity-80">
+        <img 
+          src="/logo.png" 
+          alt="SecureServices" 
+          class="h-10 w-auto"
+        />
+      </a>
+
+      <!-- Desktop Navigation -->
+      <div class="hidden lg:flex items-center gap-1">
+        {navLinks.map((link) => (
+          <a 
+            href={link.href} 
+            class="px-4 py-2 text-[15px] font-medium text-foreground-muted hover:text-foreground transition-colors"
+          >
+            {link.label}
+          </a>
+        ))}
+      </div>
+
+      <!-- CTA Button -->
+      <div class="hidden lg:flex items-center">
+        <a href="#kontakt" class="btn-primary !py-2.5 !px-5 !text-sm">
+          Bezpłatna konsultacja
+        </a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button 
+        id="mobile-menu-btn"
+        class="lg:hidden relative w-10 h-10 flex items-center justify-center rounded-lg hover:bg-background-secondary transition-colors"
+        aria-label="Menu"
+      >
+        <div class="flex flex-col gap-1.5" id="hamburger">
+          <span class="w-5 h-0.5 bg-foreground transition-all duration-300 origin-center"></span>
+          <span class="w-5 h-0.5 bg-foreground transition-all duration-300"></span>
+          <span class="w-5 h-0.5 bg-foreground transition-all duration-300 origin-center"></span>
+        </div>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Navigation -->
+  <div id="mobile-menu" class="lg:hidden fixed inset-0 top-[72px] bg-white opacity-0 pointer-events-none transition-all duration-300 z-40">
+    <div class="container py-6">
+      <div class="flex flex-col gap-1">
+        {navLinks.map((link, i) => (
+          <a 
+            href={link.href} 
+            class="mobile-link py-3 px-4 text-lg font-medium text-foreground-muted hover:text-foreground hover:bg-background-secondary rounded-lg transition-all duration-200 translate-y-2 opacity-0"
+            style={`transition-delay: ${i * 50}ms`}
+          >
+            {link.label}
+          </a>
+        ))}
+        <div class="h-px bg-border my-3"></div>
+        <a 
+          href="#kontakt" 
+          class="mobile-link btn-primary mt-3 translate-y-2 opacity-0"
+          style="transition-delay: 200ms"
+        >
+          Bezpłatna konsultacja
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  const header = document.getElementById('header');
+  const headerBg = document.getElementById('header-bg');
+  const menuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const hamburger = document.getElementById('hamburger');
+  const mobileLinks = document.querySelectorAll('.mobile-link');
+  
+  let isMenuOpen = false;
+  
+  // Scroll effect
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 20) {
+      headerBg?.classList.add('border-border');
+      headerBg?.classList.remove('border-transparent');
+    } else {
+      headerBg?.classList.remove('border-border');
+      headerBg?.classList.add('border-transparent');
+    }
+  });
+
+  // Mobile menu toggle
+  menuBtn?.addEventListener('click', () => {
+    isMenuOpen = !isMenuOpen;
+    
+    if (isMenuOpen) {
+      mobileMenu?.classList.remove('opacity-0', 'pointer-events-none');
+      mobileMenu?.classList.add('opacity-100', 'pointer-events-auto');
+      hamburger?.classList.add('menu-open');
+      document.body.style.overflow = 'hidden';
+      
+      mobileLinks.forEach((link) => {
+        link.classList.remove('translate-y-2', 'opacity-0');
+      });
+    } else {
+      mobileMenu?.classList.add('opacity-0', 'pointer-events-none');
+      mobileMenu?.classList.remove('opacity-100', 'pointer-events-auto');
+      hamburger?.classList.remove('menu-open');
+      document.body.style.overflow = '';
+      
+      mobileLinks.forEach((link) => {
+        link.classList.add('translate-y-2', 'opacity-0');
+      });
+    }
+  });
+
+  // Close menu on link click
+  mobileLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      isMenuOpen = false;
+      mobileMenu?.classList.add('opacity-0', 'pointer-events-none');
+      mobileMenu?.classList.remove('opacity-100', 'pointer-events-auto');
+      hamburger?.classList.remove('menu-open');
+      document.body.style.overflow = '';
+      
+      mobileLinks.forEach((l) => {
+        l.classList.add('translate-y-2', 'opacity-0');
+      });
+    });
+  });
+</script>
+
+<style>
+  #hamburger.menu-open span:first-child {
+    transform: translateY(4px) rotate(45deg);
+  }
+  #hamburger.menu-open span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+  #hamburger.menu-open span:last-child {
+    transform: translateY(-4px) rotate(-45deg);
+  }
+</style>

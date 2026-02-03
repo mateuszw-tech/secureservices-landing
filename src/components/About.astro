@@ -1,0 +1,114 @@
+---
+const certifications = [
+  "CISSP", "CEH", "OSCP", "CISM", "AWS Security", "Azure Security", "ISO 27001 LA"
+];
+
+const values = [
+  {
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>`,
+    title: "Etyka i transparentność",
+    description: "Działamy zgodnie z najwyższymi standardami etycznymi. Pełna przejrzystość w każdym projekcie."
+  },
+  {
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/>`,
+    title: "Innowacyjność",
+    description: "Wykorzystujemy najnowsze technologie i metodologie. Ciągły rozwój kompetencji zespołu."
+  },
+  {
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>`,
+    title: "Partnerskie podejście",
+    description: "Nie jesteśmy tylko dostawcą — jesteśmy strategicznym partnerem w budowaniu odporności."
+  }
+];
+
+const stats = [
+  { value: "12+", label: "Lat doświadczenia" },
+  { value: "25+", label: "Ekspertów w zespole" },
+  { value: "500+", label: "Zrealizowanych projektów" }
+];
+---
+
+<section id="o-nas" class="relative bg-background-secondary">
+  <div class="container">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+      <!-- Left Content -->
+      <div data-reveal>
+        <div class="badge mb-5">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+          </svg>
+          O firmie
+        </div>
+        
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
+          Eksperci, którym <span class="gradient-text">możesz zaufać</span>
+        </h2>
+        
+        <p class="text-lg text-foreground-muted mb-6 leading-relaxed">
+          SecureServices to zespół pasjonatów cyberbezpieczeństwa z wieloletnim 
+          doświadczeniem w ochronie organizacji przed najbardziej wyrafinowanymi 
+          zagrożeniami cyfrowymi.
+        </p>
+
+        <p class="text-foreground-muted mb-8">
+          Łączymy głęboką wiedzę techniczną z praktycznym doświadczeniem zdobytym 
+          podczas pracy z największymi organizacjami w Polsce i Europie. Nasz zespół 
+          tworzą byli analitycy SOC, pentesterzy i architekci bezpieczeństwa.
+        </p>
+
+        <!-- Certifications -->
+        <div class="mb-10">
+          <p class="text-sm text-foreground-subtle uppercase tracking-wider font-medium mb-4">
+            Certyfikacje zespołu
+          </p>
+          <div class="flex flex-wrap gap-2">
+            {certifications.map((cert) => (
+              <span class="px-3 py-1.5 text-sm font-medium bg-background border border-border rounded-lg text-foreground-muted">
+                {cert}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        <a href="#kontakt" class="btn-primary">
+          Poznaj nas bliżej
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+          </svg>
+        </a>
+      </div>
+
+      <!-- Right Content - Values & Stats -->
+      <div class="space-y-5" data-reveal>
+        {values.map((value, index) => (
+          <div 
+            class="card-elevated p-6 flex gap-5"
+            style={`--delay: ${index * 0.1}s`}
+          >
+            <div class="icon-container flex-shrink-0">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <Fragment set:html={value.icon} />
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold mb-1.5">{value.title}</h3>
+              <p class="text-foreground-muted text-sm leading-relaxed">{value.description}</p>
+            </div>
+          </div>
+        ))}
+
+        <!-- Stats Card -->
+        <div class="card-elevated p-8 bg-brand-light border-brand-primary/10">
+          <div class="grid grid-cols-3 gap-6 text-center">
+            {stats.map((stat) => (
+              <div>
+                <div class="text-2xl md:text-3xl font-bold text-brand-primary mb-1">{stat.value}</div>
+                <div class="text-xs text-foreground-muted">{stat.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

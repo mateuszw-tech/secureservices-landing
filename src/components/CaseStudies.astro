@@ -1,0 +1,126 @@
+---
+const caseStudies = [
+  {
+    client: "Instytucja Finansowa",
+    industry: "Bankowość",
+    challenge: "Zabezpieczenie infrastruktury przed zaawansowanymi atakami APT",
+    result: "Zero incydentów bezpieczeństwa przez 24 miesiące",
+    metric: "100%",
+    metricLabel: "Ochrona przed APT",
+    services: ["Audyt bezpieczeństwa", "SOC 24/7", "Testy penetracyjne"],
+    quote: "SecureServices zrewolucjonizowało nasze podejście do cyberbezpieczeństwa. Ich proaktywne podejście pozwoliło nam wyprzedzić zagrożenia.",
+    author: "CISO, Instytucja Finansowa"
+  },
+  {
+    client: "Firma Produkcyjna",
+    industry: "Przemysł",
+    challenge: "Zabezpieczenie systemów OT/ICS przed cyberatakami",
+    result: "Pełna widoczność i kontrola nad siecią przemysłową",
+    metric: "85%",
+    metricLabel: "Redukcja ryzyka",
+    services: ["Bezpieczeństwo OT", "Segmentacja sieci", "Monitoring"],
+    quote: "Dzięki SecureServices zyskaliśmy kontrolę nad bezpieczeństwem naszych linii produkcyjnych bez wpływu na ciągłość operacji.",
+    author: "Dyrektor IT, Firma Produkcyjna"
+  },
+  {
+    client: "E-commerce",
+    industry: "Handel internetowy",
+    challenge: "Ochrona danych klientów i zgodność z PCI DSS",
+    result: "Certyfikacja PCI DSS Level 1 w 3 miesiące",
+    metric: "3x",
+    metricLabel: "Szybsza certyfikacja",
+    services: ["Audyt PCI DSS", "Hardening", "Szkolenia"],
+    quote: "Profesjonalizm i wiedza zespołu SecureServices pozwoliły nam szybko osiągnąć zgodność i zbudować zaufanie klientów.",
+    author: "CTO, E-commerce"
+  }
+];
+
+const trustedBy = ['Fintech', 'Healthcare', 'E-commerce', 'Manufacturing', 'Government'];
+---
+
+<section id="realizacje" class="relative bg-background">
+  <div class="container">
+    <!-- Section Header -->
+    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-14" data-reveal>
+      <div class="max-w-2xl">
+        <div class="badge mb-5">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
+          </svg>
+          Case Studies
+        </div>
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+          Udowodnione <span class="gradient-text">rezultaty</span>
+        </h2>
+        <p class="text-lg text-foreground-muted">
+          Poznaj historie sukcesu naszych klientów i dowiedz się, jak pomagamy 
+          organizacjom budować odporność na cyberzagrożenia.
+        </p>
+      </div>
+      <a href="#kontakt" class="btn-secondary shrink-0">
+        Zostań kolejną historią sukcesu
+      </a>
+    </div>
+
+    <!-- Case Studies Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      {caseStudies.map((study, index) => (
+        <div 
+          class="card-elevated p-7 flex flex-col"
+          data-reveal
+          style={`--delay: ${index * 0.1}s`}
+        >
+          <!-- Industry Badge -->
+          <div class="text-xs font-semibold uppercase tracking-wider text-foreground-subtle mb-5">
+            {study.industry}
+          </div>
+          
+          <!-- Metric -->
+          <div class="mb-5">
+            <div class="text-4xl md:text-5xl font-bold text-brand-primary mb-1">{study.metric}</div>
+            <div class="text-sm text-foreground-muted">{study.metricLabel}</div>
+          </div>
+
+          <!-- Challenge & Result -->
+          <div class="mb-5 pb-5 border-b border-border">
+            <h3 class="text-lg font-semibold mb-2">{study.client}</h3>
+            <p class="text-foreground-muted text-sm leading-relaxed">{study.challenge}</p>
+          </div>
+
+          <!-- Services Used -->
+          <div class="flex flex-wrap gap-2 mb-5">
+            {study.services.map((service) => (
+              <span class="px-3 py-1 text-xs font-medium bg-background-secondary rounded-full text-foreground-muted">
+                {service}
+              </span>
+            ))}
+          </div>
+
+          <!-- Quote -->
+          <blockquote class="flex-grow">
+            <p class="text-foreground-muted italic text-sm leading-relaxed mb-3">
+              "{study.quote}"
+            </p>
+            <cite class="text-xs text-foreground-subtle not-italic font-medium">
+              — {study.author}
+            </cite>
+          </blockquote>
+        </div>
+      ))}
+    </div>
+
+    <!-- Trust Logos -->
+    <div class="mt-16 pt-12 border-t border-border" data-reveal>
+      <p class="text-center text-sm text-foreground-subtle mb-8 uppercase tracking-wider font-medium">
+        Zaufali nam liderzy branży
+      </p>
+      <div class="flex flex-wrap items-center justify-center gap-x-12 gap-y-4">
+        {trustedBy.map((industry) => (
+          <div class="text-foreground-subtle/60 text-base font-semibold tracking-wide hover:text-foreground-muted transition-colors">
+            {industry}
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
