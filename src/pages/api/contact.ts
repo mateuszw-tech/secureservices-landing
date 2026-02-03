@@ -1,5 +1,6 @@
 import type { APIRoute } from 'astro';
 import nodemailer from 'nodemailer';
+import 'dotenv/config';
 
 // Handle OPTIONS preflight request
 export const OPTIONS: APIRoute = async () => {
@@ -37,20 +38,20 @@ export const POST: APIRoute = async ({ request }) => {
     }
 
     // Check env variables
-    console.log('SMTP_HOST:', import.meta.env.SMTP_HOST ? 'SET' : 'NOT SET');
-    console.log('SMTP_PORT:', import.meta.env.SMTP_PORT ? 'SET' : 'NOT SET');
-    console.log('SMTP_USER:', import.meta.env.SMTP_USER ? 'SET' : 'NOT SET');
-    console.log('SMTP_PASS:', import.meta.env.SMTP_PASS ? 'SET (hidden)' : 'NOT SET');
-    console.log('CONTACT_EMAIL:', import.meta.env.CONTACT_EMAIL ? 'SET' : 'NOT SET');
+    console.log('SMTP_HOST:', process.env.SMTP_HOST ? 'SET' : 'NOT SET');
+    console.log('SMTP_PORT:', process.env.SMTP_PORT ? 'SET' : 'NOT SET');
+    console.log('SMTP_USER:', process.env.SMTP_USER ? 'SET' : 'NOT SET');
+    console.log('SMTP_PASS:', process.env.SMTP_PASS ? 'SET (hidden)' : 'NOT SET');
+    console.log('CONTACT_EMAIL:', process.env.CONTACT_EMAIL ? 'SET' : 'NOT SET');
 
     // Create transporter
     const transporter = nodemailer.createTransport({
-      host: import.meta.env.SMTP_HOST,
-      port: parseInt(import.meta.env.SMTP_PORT || '587'),
-      secure: import.meta.env.SMTP_SECURE === 'true',
+      host: process.env.SMTP_HOST,
+      port: parseInt(process.env.SMTP_PORT || '587'),
+      secure: process.env.SMTP_SECURE === 'true',
       auth: {
-        user: import.meta.env.SMTP_USER,
-        pass: import.meta.env.SMTP_PASS,
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS,
       },
       tls: {
         rejectUnauthorized: false // Needed for shared hosting with mismatched certificates
@@ -105,8 +106,8 @@ ${message}
 
     // Send email
     await transporter.sendMail({
-      from: `"SecureServices Website" <${import.meta.env.SMTP_USER}>`,
-      to: import.meta.env.CONTACT_EMAIL,
+      from: `"SecureServices Website" <${process.env.SMTP_USER}>`,
+      to: process.env.CONTACT_EMAIL,
       replyTo: email,
       subject: `Nowe zapytanie: ${serviceName} - ${name}`,
       text: textContent,
