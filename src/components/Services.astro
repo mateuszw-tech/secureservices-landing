@@ -3,73 +3,73 @@ const services = [
   {
     id: "szbi",
     title: "Dokumentacja SZBI",
-    description: "Kompleksowe opracowanie Systemu Zarządzania Bezpieczeństwem Informacji zgodnego z wymaganiami normy ISO 27001.",
+    description: "Opracowanie Systemu Zarządzania Bezpieczeństwem Informacji zgodnego z ISO 27001.",
     icon: "document",
   },
   {
     id: "audit",
     title: "Audyt ISO 27001",
-    description: "Profesjonalne audyty zgodności z normą ISO 27001. Identyfikacja luk i przygotowanie do certyfikacji.",
+    description: "Audyty zgodności z normą ISO 27001 i przygotowanie do certyfikacji.",
     icon: "shield-check",
   },
   {
     id: "risk",
     title: "Zarządzanie ryzykiem",
-    description: "Analiza i ocena ryzyka bezpieczeństwa informacji. Opracowanie planów minimalizacji zagrożeń.",
+    description: "Analiza i ocena ryzyka bezpieczeństwa informacji.",
     icon: "chart",
   },
   {
     id: "it-support",
     title: "Wsparcie informatyczne",
-    description: "Kompleksowe wsparcie w zakresie sieci komputerowych, sprzętu i systemów IT dla Twojej organizacji.",
+    description: "Kompleksowe wsparcie sieci, sprzętu i systemów IT.",
     icon: "server",
   },
   {
     id: "rodo",
     title: "Ochrona danych osobowych",
-    description: "Usługi Inspektora Ochrony Danych (IOD). Wdrożenie i nadzór nad zgodnością z RODO.",
+    description: "Usługi IOD i wdrożenie zgodności z RODO.",
     icon: "user-shield",
   },
   {
     id: "awareness",
-    title: "Szkolenia Security Awareness",
-    description: "Budowanie świadomości bezpieczeństwa wśród pracowników. Symulacje phishingowe i testy socjotechniczne.",
+    title: "Szkolenia dla pracowników",
+    description: "Budowanie świadomości bezpieczeństwa, symulacje phishingowe i testy socjotechniczne.",
     icon: "academic",
   },
   {
     id: "pentest",
     title: "Testy penetracyjne",
-    description: "Symulowane ataki hakerskie przeprowadzane przez certyfikowanych specjalistów. Wykrywamy podatności przed cyberprzestępcami.",
+    description: "Symulowane ataki wykrywające podatności w systemach.",
     icon: "terminal",
   },
   {
     id: "vulnerability",
     title: "Badanie podatności sieci",
-    description: "Kompleksowe skanowanie i analiza podatności w sieciach komputerowych. Raporty z rekomendacjami naprawczymi.",
+    description: "Skanowanie i analiza podatności infrastruktury sieciowej.",
     icon: "search",
   },
   {
     id: "ai-training",
     title: "Szkolenia z AI",
-    description: "Praktyczne szkolenia z wykorzystania sztucznej inteligencji w biznesie i codziennej pracy.",
+    description: "Praktyczne szkolenia z wykorzystania sztucznej inteligencji.",
     icon: "chip",
   },
   {
     id: "webdev",
     title: "Aplikacje internetowe",
-    description: "Projektowanie i budowa bezpiecznych aplikacji webowych z uwzględnieniem najlepszych praktyk security.",
+    description: "Projektowanie i budowa bezpiecznych aplikacji webowych.",
     icon: "code",
   },
   {
     id: "training",
-    title: "Szkolenia RODO i IT Security",
-    description: "Kompleksowe szkolenia z zakresu ochrony danych osobowych oraz bezpieczeństwa IT dla zespołów.",
+    title: "Szkolenia RODO i IT",
+    description: "Szkolenia z ochrony danych i bezpieczeństwa IT.",
     icon: "users",
   },
   {
     id: "incident-response",
     title: "Reagowanie na incydenty",
-    description: "Natychmiastowa pomoc po ataku cybernetycznym. Naprawa stron, odzyskiwanie danych i przywracanie systemów do działania.",
+    description: "Naprawa stron i systemów po atakach cybernetycznych.",
     icon: "alert",
   },
 ];
@@ -93,7 +93,7 @@ const icons: Record<string, string> = {
 <section id="uslugi" class="relative bg-background">
   <div class="container">
     <!-- Section Header -->
-    <div class="max-w-2xl mb-14" data-reveal>
+    <div class="max-w-2xl mb-12" data-reveal>
       <div class="badge mb-5">
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
@@ -108,37 +108,58 @@ const icons: Record<string, string> = {
       </p>
     </div>
 
-    <!-- Services Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {services.map((service, index) => (
-        <div 
-          class="card-elevated p-7 group"
-          data-reveal
-          style={`--delay: ${index * 0.05}s`}
+    <!-- Services Grid - Compact with expand down -->
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4" data-reveal>
+      {services.map((service) => (
+        <a 
+          href="#kontakt"
+          class="service-card group bg-background border border-border rounded-xl p-4 md:p-5 transition-all duration-300 hover:border-brand-primary hover:shadow-lg hover:shadow-brand-primary/10"
         >
-          <!-- Icon -->
-          <div class="icon-container icon-container-lg mb-5 transition-transform duration-300 group-hover:scale-105">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <Fragment set:html={icons[service.icon]} />
-            </svg>
+          <!-- Header - always visible -->
+          <div class="flex items-center gap-3">
+            <div class="icon-container flex-shrink-0 w-10 h-10 md:w-11 md:h-11 transition-colors duration-300 group-hover:bg-brand-primary group-hover:text-white">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <Fragment set:html={icons[service.icon]} />
+              </svg>
+            </div>
+            <h3 class="text-sm md:text-base font-semibold leading-tight group-hover:text-brand-primary transition-colors">{service.title}</h3>
           </div>
 
-          <!-- Content -->
-          <h3 class="text-xl font-bold mb-3">{service.title}</h3>
-          <p class="text-foreground-muted text-[15px] leading-relaxed mb-5">{service.description}</p>
-
-          <!-- Link -->
-          <a 
-            href="#kontakt" 
-            class="inline-flex items-center gap-2 text-sm font-semibold text-brand-primary hover:gap-3 transition-all duration-200"
-          >
-            Zapytaj o szczegóły
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-            </svg>
-          </a>
-        </div>
+          <!-- Description - expands on hover -->
+          <div class="description-wrapper">
+            <p class="text-xs md:text-sm text-foreground-muted leading-relaxed pt-3">
+              {service.description}
+            </p>
+          </div>
+        </a>
       ))}
+    </div>
+
+    <!-- CTA -->
+    <div class="text-center mt-10" data-reveal>
+      <p class="text-foreground-muted mb-4">Nie znalazłeś tego, czego szukasz?</p>
+      <a href="#kontakt" class="btn-primary">
+        Skontaktuj się z nami
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+        </svg>
+      </a>
     </div>
   </div>
 </section>
+
+<style>
+  .service-card .description-wrapper {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.3s ease;
+  }
+  
+  .service-card .description-wrapper > p {
+    overflow: hidden;
+  }
+  
+  .service-card:hover .description-wrapper {
+    grid-template-rows: 1fr;
+  }
+</style>
