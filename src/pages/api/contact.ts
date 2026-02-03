@@ -1,19 +1,47 @@
 import type { APIRoute } from 'astro';
 import nodemailer from 'nodemailer';
 
+// Handle OPTIONS preflight request
+export const OPTIONS: APIRoute = async () => {
+  return new Response(null, {
+    status: 204,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'POST, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type',
+    },
+  });
+};
+
 export const POST: APIRoute = async ({ request }) => {
+  const headers = {
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': '*',
+  };
+
   try {
+    console.log('=== Contact form request received ===');
+    
     const data = await request.json();
+    console.log('Form data:', JSON.stringify(data, null, 2));
     
     const { name, email, company, phone, service, message } = data;
 
     // Validate required fields
     if (!name || !email || !message) {
+      console.log('Validation failed: missing required fields');
       return new Response(
         JSON.stringify({ success: false, error: 'Wypełnij wszystkie wymagane pola.' }),
-        { status: 400, headers: { 'Content-Type': 'application/json' } }
+        { status: 400, headers }
       );
     }
+
+    // Check env variables
+    console.log('SMTP_HOST:', import.meta.env.SMTP_HOST ? 'SET' : 'NOT SET');
+    console.log('SMTP_PORT:', import.meta.env.SMTP_PORT ? 'SET' : 'NOT SET');
+    console.log('SMTP_USER:', import.meta.env.SMTP_USER ? 'SET' : 'NOT SET');
+    console.log('SMTP_PASS:', import.meta.env.SMTP_PASS ? 'SET (hidden)' : 'NOT SET');
+    console.log('CONTACT_EMAIL:', import.meta.env.CONTACT_EMAIL ? 'SET' : 'NOT SET');
 
     // Create transporter
     const transporter = nodemailer.createTransport({
@@ -70,6 +98,8 @@ Wiadomość:
 ${message}
     `;
 
+    console.log('Attempting to send email...');
+
     // Send email
     await transporter.sendMail({
       from: `"SecureServices Website" <${import.meta.env.SMTP_USER}>`,
@@ -80,16 +110,23 @@ ${message}
       html: htmlContent,
     });
 
+    console.log('Email sent successfully!');
+
     return new Response(
       JSON.stringify({ success: true, message: 'Wiadomość została wysłana.' }),
-      { status: 200, headers: { 'Content-Type': 'application/json' } }
+      { status: 200, headers }
     );
 
   } catch (error) {
-    console.error('Contact form error:', error);
+    console.error('=== Contact form error ===');
+    console.error('Error:', error);
     return new Response(
-      JSON.stringify({ success: false, error: 'Wystąpił błąd podczas wysyłania wiadomości.' }),
-      { status: 500, headers: { 'Content-Type': 'application/json' } }
+      JSON.stringify({ 
+        success: false, 
+        error: 'Wystąpił błąd podczas wysyłania wiadomości.',
+        details: error instanceof Error ? error.message : 'Unknown error'
+      }),
+      { status: 500, headers }
     );
   }
 };
