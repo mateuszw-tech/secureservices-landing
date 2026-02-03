@@ -1,37 +1,25 @@
 ---
 const caseStudies = [
   {
-    client: "Instytucja Finansowa",
-    industry: "Bankowość",
-    challenge: "Zabezpieczenie infrastruktury przed zaawansowanymi atakami APT",
-    result: "Zero incydentów bezpieczeństwa przez 24 miesiące",
+    industry: "Klient prywatny",
     metric: "100%",
-    metricLabel: "Ochrona przed APT",
-    services: ["Audyt bezpieczeństwa", "SOC 24/7", "Testy penetracyjne"],
-    quote: "SecureServices zrewolucjonizowało nasze podejście do cyberbezpieczeństwa. Ich proaktywne podejście pozwoliło nam wyprzedzić zagrożenia.",
-    author: "CISO, Instytucja Finansowa"
+    metricLabel: "Profesjonalizmu",
+    services: ["Naprawa strony", "Odzyskanie danych", "Zabezpieczenie"],
+    quote: "Po ataku na moją stronę internetową reakcja była błyskawiczna. Strona została naprawiona i zabezpieczona w jeden dzień.",
   },
   {
-    client: "Firma Produkcyjna",
-    industry: "Przemysł",
-    challenge: "Zabezpieczenie systemów OT/ICS przed cyberatakami",
-    result: "Pełna widoczność i kontrola nad siecią przemysłową",
-    metric: "85%",
-    metricLabel: "Redukcja ryzyka",
-    services: ["Bezpieczeństwo OT", "Segmentacja sieci", "Monitoring"],
-    quote: "Dzięki SecureServices zyskaliśmy kontrolę nad bezpieczeństwem naszych linii produkcyjnych bez wpływu na ciągłość operacji.",
-    author: "Dyrektor IT, Firma Produkcyjna"
+    industry: "Sektor publiczny",
+    metric: "100%",
+    metricLabel: "Zgodność z RODO",
+    services: ["Ochrona danych osobowych", "Audyt RODO", "Szkolenia"],
+    quote: "Kompleksowa obsługa w zakresie ochrony danych osobowych. Szybka reakcja i fachowe doradztwo.",
   },
   {
-    client: "E-commerce",
-    industry: "Handel internetowy",
-    challenge: "Ochrona danych klientów i zgodność z PCI DSS",
-    result: "Certyfikacja PCI DSS Level 1 w 3 miesiące",
-    metric: "3x",
-    metricLabel: "Szybsza certyfikacja",
-    services: ["Audyt PCI DSS", "Hardening", "Szkolenia"],
-    quote: "Profesjonalizm i wiedza zespołu SecureServices pozwoliły nam szybko osiągnąć zgodność i zbudować zaufanie klientów.",
-    author: "CTO, E-commerce"
+    industry: "Branża IT",
+    metric: "100%",
+    metricLabel: "Zadowolenia",
+    services: ["Testy penetracyjne", "Badanie podatności", "Wsparcie IT"],
+    quote: "Rzetelna analiza bezpieczeństwa i konkretne rekomendacje, które realnie poprawiły naszą infrastrukturę.",
   }
 ];
 
@@ -81,14 +69,8 @@ const trustedBy = ['Fintech', 'Healthcare', 'E-commerce', 'Manufacturing', 'Gove
             <div class="text-sm text-foreground-muted">{study.metricLabel}</div>
           </div>
 
-          <!-- Challenge & Result -->
-          <div class="mb-5 pb-5 border-b border-border">
-            <h3 class="text-lg font-semibold mb-2">{study.client}</h3>
-            <p class="text-foreground-muted text-sm leading-relaxed">{study.challenge}</p>
-          </div>
-
           <!-- Services Used -->
-          <div class="flex flex-wrap gap-2 mb-5">
+          <div class="flex flex-wrap gap-2 mb-5 pb-5 border-b border-border">
             {study.services.map((service) => (
               <span class="px-3 py-1 text-xs font-medium bg-background-secondary rounded-full text-foreground-muted">
                 {service}
@@ -98,12 +80,9 @@ const trustedBy = ['Fintech', 'Healthcare', 'E-commerce', 'Manufacturing', 'Gove
 
           <!-- Quote -->
           <blockquote class="flex-grow">
-            <p class="text-foreground-muted italic text-sm leading-relaxed mb-3">
+            <p class="text-foreground-muted italic text-sm leading-relaxed">
               "{study.quote}"
             </p>
-            <cite class="text-xs text-foreground-subtle not-italic font-medium">
-              — {study.author}
-            </cite>
           </blockquote>
         </div>
       ))}

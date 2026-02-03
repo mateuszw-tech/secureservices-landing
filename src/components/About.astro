@@ -1,8 +1,4 @@
 ---
-const certifications = [
-  "CISSP", "CEH", "OSCP", "CISM", "AWS Security", "Azure Security", "ISO 27001 LA"
-];
-
 const values = [
   {
     icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>`,
@@ -12,7 +8,7 @@ const values = [
   {
     icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/>`,
     title: "Innowacyjność",
-    description: "Wykorzystujemy najnowsze technologie i metodologie. Ciągły rozwój kompetencji zespołu."
+    description: "Wykorzystujemy najnowsze technologie i metodologie. Ciągły rozwój kompetencji."
   },
   {
     icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>`,
@@ -22,9 +18,9 @@ const values = [
 ];
 
 const stats = [
-  { value: "12+", label: "Lat doświadczenia" },
-  { value: "25+", label: "Ekspertów w zespole" },
-  { value: "500+", label: "Zrealizowanych projektów" }
+  { value: "7+", label: "Lat doświadczenia" },
+  { value: "100+", label: "Zrealizowanych projektów" },
+  { value: "100%", label: "Zadowolonych klientów" }
 ];
 ---
 
@@ -45,30 +41,16 @@ const stats = [
         </h2>
         
         <p class="text-lg text-foreground-muted mb-6 leading-relaxed">
-          SecureServices to zespół pasjonatów cyberbezpieczeństwa z wieloletnim 
-          doświadczeniem w ochronie organizacji przed najbardziej wyrafinowanymi 
-          zagrożeniami cyfrowymi.
+          SecureServices to profesjonalna firma z wieloletnim 
+          doświadczeniem w cyberbezpieczeństwie i usługach IT dla organizacji 
+          każdej wielkości.
         </p>
 
         <p class="text-foreground-muted mb-8">
           Łączymy głęboką wiedzę techniczną z praktycznym doświadczeniem zdobytym 
-          podczas pracy z największymi organizacjami w Polsce i Europie. Nasz zespół 
-          tworzą byli analitycy SOC, pentesterzy i architekci bezpieczeństwa.
+          podczas pracy z organizacjami w Polsce i Europie. Specjalizujemy się 
+          w audytach, szkoleniach, ochronie danych i kompleksowym wsparciu IT.
         </p>
-
-        <!-- Certifications -->
-        <div class="mb-10">
-          <p class="text-sm text-foreground-subtle uppercase tracking-wider font-medium mb-4">
-            Certyfikacje zespołu
-          </p>
-          <div class="flex flex-wrap gap-2">
-            {certifications.map((cert) => (
-              <span class="px-3 py-1.5 text-sm font-medium bg-background border border-border rounded-lg text-foreground-muted">
-                {cert}
-              </span>
-            ))}
-          </div>
-        </div>
 
         <a href="#kontakt" class="btn-primary">
           Poznaj nas bliżej
