@@ -37,15 +37,15 @@ const trustedBy = ['Fintech', 'Healthcare', 'E-commerce', 'Manufacturing', 'Gove
           </svg>
           Case Studies
         </div>
-        <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+        <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
           Udowodnione <span class="gradient-text">rezultaty</span>
         </h2>
-        <p class="text-lg text-foreground-muted">
+        <p class="text-base sm:text-lg text-foreground-muted">
           Poznaj historie sukcesu naszych klientów i dowiedz się, jak pomagamy 
           organizacjom budować odporność na cyberzagrożenia.
         </p>
       </div>
-      <a href="#kontakt" class="btn-secondary shrink-0">
+      <a href="#kontakt" class="btn-secondary shrink-0 hidden sm:inline-flex">
         Zostań kolejną historią sukcesu
       </a>
     </div>
@@ -54,25 +54,25 @@ const trustedBy = ['Fintech', 'Healthcare', 'E-commerce', 'Manufacturing', 'Gove
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
       {caseStudies.map((study, index) => (
         <div 
-          class="card-elevated p-7 flex flex-col"
+          class="card-elevated p-5 sm:p-7 flex flex-col"
           data-reveal
           style={`--delay: ${index * 0.1}s`}
         >
           <!-- Industry Badge -->
-          <div class="text-xs font-semibold uppercase tracking-wider text-foreground-subtle mb-5">
+          <div class="text-xs font-semibold uppercase tracking-wider text-foreground-subtle mb-4 sm:mb-5">
             {study.industry}
           </div>
           
           <!-- Metric -->
-          <div class="mb-5">
-            <div class="text-4xl md:text-5xl font-bold text-brand-primary mb-1">{study.metric}</div>
+          <div class="mb-4 sm:mb-5">
+            <div class="text-3xl sm:text-4xl md:text-5xl font-bold text-brand-primary mb-1">{study.metric}</div>
             <div class="text-sm text-foreground-muted">{study.metricLabel}</div>
           </div>
 
           <!-- Services Used -->
-          <div class="flex flex-wrap gap-2 mb-5 pb-5 border-b border-border">
+          <div class="flex flex-wrap gap-1.5 sm:gap-2 mb-4 sm:mb-5 pb-4 sm:pb-5 border-b border-border">
             {study.services.map((service) => (
-              <span class="px-3 py-1 text-xs font-medium bg-background-secondary rounded-full text-foreground-muted">
+              <span class="px-2 sm:px-3 py-1 text-[10px] sm:text-xs font-medium bg-background-secondary rounded-full text-foreground-muted">
                 {service}
               </span>
             ))}
@@ -89,13 +89,13 @@ const trustedBy = ['Fintech', 'Healthcare', 'E-commerce', 'Manufacturing', 'Gove
     </div>
 
     <!-- Trust Logos -->
-    <div class="mt-16 pt-12 border-t border-border" data-reveal>
-      <p class="text-center text-sm text-foreground-subtle mb-8 uppercase tracking-wider font-medium">
+    <div class="mt-10 sm:mt-16 pt-8 sm:pt-12 border-t border-border" data-reveal>
+      <p class="text-center text-xs sm:text-sm text-foreground-subtle mb-6 sm:mb-8 uppercase tracking-wider font-medium">
         Zaufali nam liderzy branży
       </p>
-      <div class="flex flex-wrap items-center justify-center gap-x-12 gap-y-4">
+      <div class="flex flex-wrap items-center justify-center gap-x-6 sm:gap-x-12 gap-y-3 sm:gap-y-4">
         {trustedBy.map((industry) => (
-          <div class="text-foreground-subtle/60 text-base font-semibold tracking-wide hover:text-foreground-muted transition-colors">
+          <div class="text-foreground-subtle/60 text-sm sm:text-base font-semibold tracking-wide hover:text-foreground-muted transition-colors">
             {industry}
           </div>
         ))}

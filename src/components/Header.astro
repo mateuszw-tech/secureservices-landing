@@ -11,7 +11,7 @@ const navLinks = [
   <div class="absolute inset-0 bg-white/80 backdrop-blur-xl border-b border-transparent transition-all duration-300" id="header-bg"></div>
   
   <nav class="container relative z-10">
-    <div class="flex items-center justify-between h-[72px]">
+    <div class="flex items-center justify-between h-16 sm:h-[72px]">
       <!-- Logo -->
       <a href="/" class="flex items-center transition-opacity hover:opacity-80">
         <img 
@@ -56,7 +56,7 @@ const navLinks = [
   </nav>
 
   <!-- Mobile Navigation -->
-  <div id="mobile-menu" class="lg:hidden fixed inset-0 top-[72px] bg-white opacity-0 pointer-events-none transition-all duration-300 z-40">
+  <div id="mobile-menu" class="lg:hidden fixed inset-0 top-16 sm:top-[72px] bg-white opacity-0 pointer-events-none transition-all duration-300 z-40">
     <div class="container py-6">
       <div class="flex flex-col gap-1">
         {navLinks.map((link, i) => (
@@ -145,13 +145,13 @@ const navLinks = [
 
 <style>
   #hamburger.menu-open span:first-child {
-    transform: translateY(4px) rotate(45deg);
+    transform: translateY(8px) rotate(45deg);
   }
   #hamburger.menu-open span:nth-child(2) {
     opacity: 0;
     transform: scaleX(0);
   }
   #hamburger.menu-open span:last-child {
-    transform: translateY(-4px) rotate(-45deg);
+    transform: translateY(-8px) rotate(-45deg);
   }
 </style>

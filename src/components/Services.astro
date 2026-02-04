@@ -100,16 +100,16 @@ const icons: Record<string, string> = {
         </svg>
         Nasze usługi
       </div>
-      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-5">
+      <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-5">
         Kompleksowe wsparcie <span class="gradient-text">Twojego biznesu</span>
       </h2>
-      <p class="text-lg text-foreground-muted">
+      <p class="text-base sm:text-lg text-foreground-muted">
         Oferujemy szeroki zakres usług z dziedziny cyberbezpieczeństwa, zgodności i wsparcia IT.
       </p>
     </div>
 
     <!-- Services Grid - Compact with expand down -->
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4" data-reveal>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4" data-reveal>
       {services.map((service) => (
         <a 
           href="#kontakt"
@@ -149,17 +149,27 @@ const icons: Record<string, string> = {
 </section>
 
 <style>
-  .service-card .description-wrapper {
-    display: grid;
-    grid-template-rows: 0fr;
-    transition: grid-template-rows 0.3s ease;
+  /* Mobile: always show description */
+  @media (max-width: 767px) {
+    .service-card .description-wrapper {
+      display: block;
+    }
   }
   
-  .service-card .description-wrapper > p {
-    overflow: hidden;
-  }
-  
-  .service-card:hover .description-wrapper {
-    grid-template-rows: 1fr;
+  /* Desktop: expand on hover */
+  @media (min-width: 768px) {
+    .service-card .description-wrapper {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.3s ease;
+    }
+    
+    .service-card .description-wrapper > p {
+      overflow: hidden;
+    }
+    
+    .service-card:hover .description-wrapper {
+      grid-template-rows: 1fr;
+    }
   }
 </style>
